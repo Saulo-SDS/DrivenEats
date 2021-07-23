@@ -59,7 +59,15 @@ body{
     margin-bottom: 10px;
 }
 
-.nome-comida {
+.nome-comida1,
+.nome-comida2,
+.nome-comida3,
+.nome-bebida1,
+.nome-bebida2,
+.nome-bebida3,
+.nome-sobremesa1,
+.nome-sobremesa2,
+.nome-sobremesa3 {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 700;
@@ -87,6 +95,24 @@ body{
     line-height: 19px;
     text-align: left;
     color: black;    
+}
+
+
+.preco-comida1,
+.preco-comida2,
+.preco-comida3,
+.preco-bebida1,
+.preco-bebida2,
+.preco-bebida3,
+.preco-sobremesa1,
+.preco-sobremesa2,
+.preco-sobremesa3 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    color: black;  
 }
 
 ul {
