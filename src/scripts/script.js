@@ -1,19 +1,15 @@
 let comida_selecionada = 0;
 let bebida_selecionada = 0;
 let sobremesa_selecionada = 0;
+let pedido = "";
 
-function realizarPedido(){
+function liberaPedido(){
     if(comida_selecionada > 0 && bebida_selecionada > 0 && sobremesa_selecionada > 0){
         const elemento = document.querySelector("button");
         elemento.removeAttribute("disabled");
         elemento.classList.add("botao-pedido-confirmacao");
         elemento.innerHTML = 'Fechar pedido';
     }
-}
-
-function realizarPedido(){
-    alert("funcionando...");
-    enviaPedido();
 }
 
 function selecionaComida(opcao) {
@@ -25,7 +21,7 @@ function selecionaComida(opcao) {
     const icone = document.querySelectorAll("ion-icon");
     icone[opcao-1].style.color = "#32B72F";
     comida_selecionada = opcao;
-    realizarPedido();
+    liberaPedido();
 }
 
 function selecionaBebida(opcao) {
@@ -37,7 +33,7 @@ function selecionaBebida(opcao) {
     const icone = document.querySelectorAll(".bebida");
     icone[opcao-1].style.color = "#32B72F";
     bebida_selecionada = opcao;
-    realizarPedido();
+    liberaPedido();
 }
 
 function selecionaSobremesa(opcao) {
@@ -49,7 +45,7 @@ function selecionaSobremesa(opcao) {
     const icone = document.querySelectorAll(".sobremesa");
     icone[opcao-1].style.color = "#32B72F";
     sobremesa_selecionada = opcao;
-    realizarPedido();
+    liberaPedido();
 }
 
 
@@ -74,9 +70,15 @@ function resetaOpcaoSobremesa(opcao){
     anterior_checado[sobremesa_selecionada-1].style.color = "white";
 }
 
+function trataValorPedido(valor){
+    valor = valor.replace('R$ ','');
+    valor = valor.replace(',','.');
+    return Number(valor);
+}
 
-
-function enviaPedido(){
+function fecharPedido() {
+    let nome_cliente = prompt("Informe o seu nome:");
+    let endereco_cliente = prompt("Informe seu endereço:");
 
     const element_comida = document.querySelector(".nome-comida" + comida_selecionada);
     const element_bebida = document.querySelector(".nome-bebida" + bebida_selecionada);
@@ -94,27 +96,32 @@ function enviaPedido(){
     let valor_bebida = element_preco_bebida.innerHTML;
     let valor_sobremesa = element_preco_sobremesa.innerHTML;
 
-    let valor_total = ValorPedido(valor_comida) + ValorPedido(valor_bebida) + ValorPedido(valor_sobremesa);
+    let valor_total = trataValorPedido(valor_comida) + trataValorPedido(valor_bebida) + trataValorPedido(valor_sobremesa);
+    valor_total = valor_total.toFixed(2);
 
-    let pedido = `Olá, gostaria de fazer o pedido:\n` + 
-                 `- Prato: ${nome_comida}\n` + 
-                 `- Bebida: ${nome_bebida}\n` + 
-                 `- Sobremesa: ${nome_sobremesa}\n` +
-                 `Total: ${valor_total.toFixed(2)}\n`;
+    pedido = `Olá, gostaria de fazer o pedido:\n` + `- Prato: ${nome_comida}\n` + 
+             `- Bebida: ${nome_bebida}\n` + `- Sobremesa: ${nome_sobremesa}\n` +
+             `Total: R$ ${valor_total}\n\n`+ `Nome: ${nome_cliente}\n`+`Endereço: ${endereco_cliente}\n`;
 
-    /*
-    console.log(nome_comida);
-    console.log(nome_bebida);
-    console.log(nome_sobremesa);
-    console.log(valor_total.toFixed(2));
-    console.log(pedido);*/
+    const elem_revisa_pedido = document.querySelector(".revisa-pedido");
+    elem_revisa_pedido.classList.toggle("esconder");
 
+    document.querySelector(".nome-comida").innerHTML = nome_comida;
+    document.querySelector(".nome-bebida").innerHTML = nome_bebida;
+    document.querySelector(".nome-sobremesa").innerHTML = nome_sobremesa;
+
+    document.querySelector(".preco-comida").innerHTML = valor_comida;
+    document.querySelector(".preco-bebida").innerHTML = valor_bebida;
+    document.querySelector(".preco-sobremesa").innerHTML = valor_sobremesa;
+    document.querySelector(".preco-total").innerHTML = "<strong>R$ " + String(valor_total).replace('.',',')+"</strong>";
+}
+
+function enviarPedido(){
     const url = "https://wa.me/5592994939981?text=" + encodeURIComponent(pedido);
     window.open(url);
 }
 
-function ValorPedido(valor){
-    valor = valor.replace('R$ ','');
-    valor = valor.replace(',','.');
-    return Number(valor);
+function cancelarPedido(){
+    const elem_revisa_pedido = document.querySelector(".revisa-pedido");
+    elem_revisa_pedido.classList.toggle("esconder");
 }

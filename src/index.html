@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>DriveEats</title>
 </head>
 <body>
 
@@ -29,14 +29,14 @@
                         <p class="preco-comida1">R$ 14,90</p>
                         <ion-icon name="checkmark-circle-sharp"></ion-icon>
                     </div>
-                </li>
+                </li>Food
 
                 <li class="item comida2" onclick="selecionaComida(2)">
                     <div class="opcao">
                         <img src="../assets/bife.png" class="imagem-produto">
-                        <p class="nome-comida2">Bife a base de carne</p>
+                        <p class="nome-comida2">Bife de carne bovina</p>
                         <p class="descricao-produto">Um pouco de salada com legumes</p>
-                        <p class="preco-comida2">R$ 14,90</p>
+                        <p class="preco-comida2">R$ 22,99</p>
                         <ion-icon name="checkmark-circle-sharp"></ion-icon>
                     </div>
                 </li>
@@ -46,7 +46,7 @@
                         <img src="../assets/ensopado.png" class="imagem-produto">
                         <p class="nome-comida3">Ensopado</p>
                         <p class="descricao-produto">Ervas acompanhado de chucrute</p>
-                        <p class="preco-comida3">R$ 14,90</p>
+                        <p class="preco-comida3">R$ 30,00</p>
                         <ion-icon name="checkmark-circle-sharp"></ion-icon>
                     </div>
                 </li>
@@ -138,13 +138,45 @@
         </div>
      
     </div>
+
     <div class="barra-inferior">
-        <div class="confirmar-pedido">
-    
-            <button type="button" class="botao-pedido" onclick="realizarPedido();" disabled="disabled" name="ola">Selecione os 3 itens <br>
-                para fechar o pedido</button>
+        <div class="realizar-pedido">
+            <button type="button" class="botao-pedido" onclick="fecharPedido();" disabled="disabled">
+                Selecione os 3 itens<br>para fechar o pedido
+            </button>
         </div>
     </div>
+
+    <div class="revisa-pedido esconder">
+        <div class="confirmar-pedido">
+            <div class="box">
+                <p class="texto">Confirme seu pedido</p>
+                <div>
+                    <p class="nome-comida"></p>
+                    <p class="preco-comida"></p>
+                </div>
+                <div>
+                    <p class="nome-bebida"></p>
+                    <p class="preco-bebida"></p>
+                </div>
+                <div>
+                    <p class="nome-sobremesa"></p>
+                    <p class="preco-sobremesa"></p>
+                </div>
+                <div class="total">
+                    <p><strong>TOTAL</strong></p>
+                    <p class="preco-total"></p>
+                </div>
+    
+                <div class="confirmar">
+                    <button type="button" class="botao-confirmar" onclick="enviarPedido();">Tudo certo, pode pedir!</button>
+                    <button type="button" class="botao-cancelar" onclick="cancelarPedido();">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="./scripts/script.js"></script>
