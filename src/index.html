@@ -6,130 +6,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>DriveEats</title>
+    <title>DrivenEats</title>
 </head>
 <body>
 
-    <header class="cabecalho">
+    <header class="top">
         <div class="logo">
-            <p class="logo-titulo">DrivenEats</p>
-            <p class="logo-subtitulo">Sua comida em 6 minutos</p>
+            <p class="logo-title">DrivenEats</p>
+            <p class="logo-subtitle">Sua comida em 6 minutos</p>
         </div>
     </header>
 
     <div class="container">
         <div class="produtos">
-            <p class="titulos-gerais">Primeiro, seu prato</p>
+            <p class="general-titles">Primeiro, seu prato</p>
             <ul>
-                <li class="item comida1" onclick="selecionaComida(1);">
-                    <div class="opcao">
-                        <img src="../assets/frango.png" class="imagem-produto">
-                        <p class="nome-comida1">Frango Yin Yang</p>
-                        <p class="descricao-produto">Um pouco de batata, um pouco de salada</p>
-                        <p class="preco-comida1">R$ 14,90</p>
-                        <ion-icon name="checkmark-circle-sharp"></ion-icon>
-                    </div>
-                </li>Food
-
-                <li class="item comida2" onclick="selecionaComida(2)">
-                    <div class="opcao">
-                        <img src="../assets/bife.png" class="imagem-produto">
-                        <p class="nome-comida2">Bife de carne bovina</p>
-                        <p class="descricao-produto">Um pouco de salada com legumes</p>
-                        <p class="preco-comida2">R$ 22,99</p>
-                        <ion-icon name="checkmark-circle-sharp"></ion-icon>
-                    </div>
-                </li>
-
-                <li  class="item comida3" onclick="selecionaComida(3)">
-                    <div class="opcao">
-                        <img src="../assets/ensopado.png" class="imagem-produto">
-                        <p class="nome-comida3">Ensopado</p>
-                        <p class="descricao-produto">Ervas acompanhado de chucrute</p>
-                        <p class="preco-comida3">R$ 30,00</p>
-                        <ion-icon name="checkmark-circle-sharp"></ion-icon>
-                    </div>
-                </li>
-               
-            </ul>
-        </div>
-        
-        <div class="produtos">
-            <p class="titulos-gerais">Agora, sua bebida</p>
-            <ul>
-                <li class="item bebida1" onclick="selecionaBebida(1)">
-                    <div class="opcao-bebida">
-                        <img src="../assets/coca.png" class="imagem-produto">
-                        <p class="nome-bebida1">Coquinha gelada</p>
-                        <p class="descricao-produto">Lata 350ml</p>
+                <li class="item food1" onclick="selectProduct('food', 1);">
+                    <div class="option">
+                        <img src="../assets/frango.png" class="product-image">
+                        <p class="name-food1">Frango Yin Yang</p>
+                        <p class="product-description">Um pouco de batata, um pouco de salada</p>
                         <div>
-                            <p class="preco-bebida1">R$ 4,90</p>
-                            <ion-icon name="checkmark-circle-sharp" class="bebida"></ion-icon>
+                            <p class="price-food1">R$ 14,90</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-food1"></ion-icon>
                         </div>
                     </div>
                 </li>
 
-                <li class="item bebida2" onclick="selecionaBebida(2)">
-                    <div class="opcao-bebida">
-                        <img src="../assets/limonada.png" class="imagem-produto">
-                        <p class="nome-bebida2">Limonada</p>
-                        <p class="descricao-produto">Copo 300ml</p>
+                <li class="item food2" onclick="selectProduct('food', 2)">
+                    <div class="option">
+                        <img src="../assets/bife.png" class="product-image">
+                        <p class="name-food2">Bife de carne bovina</p>
+                        <p class="product-description">Um pouco de salada com legumes</p>
                         <div>
-                            <p class="preco-bebida2">R$ 8,99</p>
-                            <ion-icon name="checkmark-circle-sharp" class="bebida"></ion-icon>
-                        </div>
+                            <p class="price-food2">R$ 22,99</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-food2"></ion-icon>
+                        </div>     
                     </div>
                 </li>
 
-                <li class="item bebida3" onclick="selecionaBebida(3)">
-                    <div class="opcao-bebida">
-                        <img src="../assets/vinho.png" class="imagem-produto">
-                        <p class="nome-bebida3">Vinho Tinto</p>
-                        <p class="descricao-produto">Garrafa 900ml</p>
+                <li  class="item food3" onclick="selectProduct('food', 3)">
+                    <div class="option">
+                        <img src="../assets/ensopado.png" class="product-image">
+                        <p class="name-food3">Ensopado</p>
+                        <p class="product-description">Ervas acompanhado de chucrute</p>
                         <div>
-                            <p class="preco-bebida3">R$ 55,99</p>
-                            <ion-icon name="checkmark-circle-sharp" class="bebida"></ion-icon>
+                            <p class="price-food3">R$ 30,00</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-food3"></ion-icon>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
+        
+        <div class="produtos">
+            <p class="general-titles">Agora, sua bebida</p>
+            <ul>
+                <li class="item drink1" onclick="selectProduct('drink', 1)">
+                    <div class="option">
+                        <img src="../assets/coca.png" class="product-image">
+                        <p class="name-drink1">Coquinha gelada</p>
+                        <p class="product-description">Lata 350ml</p>
+                        <div>
+                            <p class="price-drink1">R$ 4,90</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-drink1"></ion-icon>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="item drink2" onclick="selectProduct('drink', 2)">
+                    <div class="option">
+                        <img src="../assets/limonada.png" class="product-image">
+                        <p class="name-drink2">Limonada</p>
+                        <p class="product-description">Copo 300ml</p>
+                        <div>
+                            <p class="price-drink2">R$ 8,99</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-drink2"></ion-icon>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="item drink3" onclick="selectProduct('drink', 3)">
+                    <div class="option">
+                        <img src="../assets/vinho.png" class="product-image">
+                        <p class="name-drink3">Vinho Tinto</p>
+                        <p class="product-description">Garrafa 900ml</p>
+                        <div>
+                            <p class="price-drink3">R$ 55,99</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-drink3"></ion-icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div class="produtos">
-            <p class="titulos-gerais">Por fim, sua sobremesa</p>
+            <p class="general-titles">Por fim, sua sobremesa</p>
             <ul>
-                <li class="item sobremesa1" onclick="selecionaSobremesa(1)">
-                    <div class="opcao-sobremesa">
-                        <img src="../assets/pudim.png" class="imagem-produto">
-                        <p class="nome-sobremesa1">Pudim</p>
-                        <p class="descricao-produto">pudim 35g</p>
+                <li class="item dessert1" onclick="selectProduct('dessert', 1)">
+                    <div class="option">
+                        <img src="../assets/pudim.png" class="product-image">
+                        <p class="name-dessert1">Pudim</p>
+                        <p class="product-description">pudim 35g</p>
                         <div>
-                            <p class="preco-sobremesa1">R$ 7,90</p>
-                            <ion-icon name="checkmark-circle-sharp" class="sobremesa"></ion-icon>
+                            <p class="price-dessert1">R$ 7,90</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-dessert1"></ion-icon>
                         </div>
                     </div>
                 </li>
 
-                <li class="item sobremesa2" onclick="selecionaSobremesa(2)">
-                    <div class="opcao-sobremesa">
-                        <img src="../assets/bolo_morango.png" class="imagem-produto">
-                        <p class="nome-sobremesa2">Bolo de morando</p>
-                        <p class="descricao-produto">Bolo de morando 40g</p>
+                <li class="item dessert2" onclick="selectProduct('dessert', 2)">
+                    <div class="option">
+                        <img src="../assets/bolo_morango.png" class="product-image">
+                        <p class="name-dessert2">Bolo de morando</p>
+                        <p class="product-description">Bolo de morando 40g</p>
                         <div>
-                            <p class="preco-sobremesa2">R$ 12,70</p>
-                            <ion-icon name="checkmark-circle-sharp" class="sobremesa"></ion-icon>
+                            <p class="price-dessert2">R$ 12,70</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-dessert2"></ion-icon>
                         </div>
                     </div>
                 </li>
 
-                <li class="item sobremesa3" onclick="selecionaSobremesa(3)">
-                    <div class="opcao-sobremesa">
-                        <img src="../assets/cookies.png" class="imagem-produto">
-                        <p class="nome-sobremesa3">Cookies</p>
-                        <p class="descricao-produto">Cookies 3 und</p>
+                <li class="item dessert3" onclick="selectProduct('dessert', 3)">
+                    <div class="option">
+                        <img src="../assets/cookies.png" class="product-image">
+                        <p class="name-dessert3">Cookies</p>
+                        <p class="product-description">Cookies 3 und</p>
                         <div>
-                            <p class="preco-sobremesa3">R$ 5,99</p>
-                            <ion-icon name="checkmark-circle-sharp" class="sobremesa"></ion-icon>
+                            <p class="price-dessert3">R$ 5,99</p>
+                            <ion-icon name="checkmark-circle-sharp" class="icon-dessert3"></ion-icon>
                         </div>
                     </div>
                 </li>
@@ -139,38 +144,38 @@
      
     </div>
 
-    <div class="barra-inferior">
-        <div class="realizar-pedido">
-            <button type="button" class="botao-pedido" onclick="fecharPedido();" disabled="disabled">
+    <div class="bottom-bar">
+        <div class="place-order">
+            <button type="button" class="button-order" onclick="closeOrder();" disabled="disabled">
                 Selecione os 3 itens<br>para fechar o pedido
             </button>
         </div>
     </div>
 
-    <div class="revisa-pedido esconder">
-        <div class="confirmar-pedido">
+    <div class="order-review esconder">
+        <div class="confirm-order">
             <div class="box">
-                <p class="texto">Confirme seu pedido</p>
+                <p class="custom-titles">Confirme seu pedido</p>
                 <div>
-                    <p class="nome-comida"></p>
-                    <p class="preco-comida"></p>
+                    <p class="name-food"></p>
+                    <p class="price-food"></p>
                 </div>
                 <div>
-                    <p class="nome-bebida"></p>
-                    <p class="preco-bebida"></p>
+                    <p class="name-drink"></p>
+                    <p class="price-drink"></p>
                 </div>
                 <div>
-                    <p class="nome-sobremesa"></p>
-                    <p class="preco-sobremesa"></p>
+                    <p class="name-dessert"></p>
+                    <p class="price-dessert"></p>
                 </div>
-                <div class="total">
+                <div class="custom-titles">
                     <p><strong>TOTAL</strong></p>
-                    <p class="preco-total"></p>
+                    <p class="price-total"></p>
                 </div>
     
-                <div class="confirmar">
-                    <button type="button" class="botao-confirmar" onclick="enviarPedido();">Tudo certo, pode pedir!</button>
-                    <button type="button" class="botao-cancelar" onclick="cancelarPedido();">Cancelar</button>
+                <div class="confirm">
+                    <button type="button" class="button-confirm" onclick="sendOrder();">Tudo certo, pode pedir!</button>
+                    <button type="button" class="button-cancel" onclick="cancelOrder();">Cancelar</button>
                 </div>
             </div>
         </div>

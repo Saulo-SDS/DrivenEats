@@ -1,73 +1,104 @@
-let comida_selecionada = 0;
-let bebida_selecionada = 0;
-let sobremesa_selecionada = 0;
+let food_selecionada = 0;
+let drink_selecionada = 0;
+let dessert_selecionada = 0;
 let pedido = "";
 
 function liberaPedido(){
-    if(comida_selecionada > 0 && bebida_selecionada > 0 && sobremesa_selecionada > 0){
+    if(food_selecionada > 0 && drink_selecionada > 0 && dessert_selecionada > 0){
         const elemento = document.querySelector("button");
         elemento.removeAttribute("disabled");
-        elemento.classList.add("botao-pedido-confirmacao");
+        elemento.classList.add("button-order-confirm");
         elemento.innerHTML = 'Fechar pedido';
     }
 }
 
-function selecionaComida(opcao) {
-    if (comida_selecionada != 0) resetaOpcaoComida(opcao);
+function selectProduct(produto, opcao){
+    
+    let opcao_aterior;
+    if(produto === "food"){
+        opcao_aterior = food_selecionada;
+        food_selecionada = opcao;
+    }else if(produto === "drink"){
+        opcao_aterior = drink_selecionada;
+        drink_selecionada = opcao;
+    }else{
+        opcao_aterior = dessert_selecionada;
+        dessert_selecionada = opcao;
+    }
 
-    let nome = ".comida" + opcao;
+    if (opcao_aterior != 0) resetaOpcao(produto, opcao_aterior);
+
+    let numero_produto = `.${produto}${opcao}`;
+    let classe_produto_selecionado = `selected-${produto}-option`;
+    let icon_item_selected = `.icon-${produto}${opcao}`;
+
+    console.log(numero_produto);
+    document.querySelector(numero_produto).classList.add(classe_produto_selecionado);
+    document.querySelector(icon_item_selected).style.color = "#32B72F";
+    liberaPedido();
+}
+
+
+function resetaOpcao(produto, opcao){
+    let classe_produto_selecionado = `selected-${produto}-option`;
+    let icon_item_selected = `.icon-${produto}${opcao}`;
+    const anterior = document.querySelector("."+classe_produto_selecionado);
+    anterior.classList.remove(classe_produto_selecionado);
+    document.querySelector(icon_item_selected).style.color = "#ffffff";
+}
+
+function selecionaComida(opcao) {
+    if (food_selecionada != 0) resetaOpcaoComida(opcao);
+
+    let nome = ".food" + opcao;
     const elemento = document.querySelector(nome);
-    elemento.classList.add("opcao-selecionada-comida");
-    const icone = document.querySelectorAll("ion-icon");
-    icone[opcao-1].style.color = "#32B72F";
-    comida_selecionada = opcao;
+    elemento.classList.add("selected-food-option");
+    const icone = document.querySelector(".icon-food"+opcao);
+    icone.style.color = "#32B72F";
+    food_selecionada = opcao;
     liberaPedido();
 }
 
 function selecionaBebida(opcao) {
-    if (bebida_selecionada != 0) resetaOpcaoBebida(opcao);
+    if (drink_selecionada != 0) resetaOpcaoBebida(opcao);
 
-    let nome = ".bebida" + opcao;
+    let nome = ".drink" + opcao;
     const elemento = document.querySelector(nome);
-    elemento.classList.add("opcao-selecionada-bebida");
-    const icone = document.querySelectorAll(".bebida");
-    icone[opcao-1].style.color = "#32B72F";
-    bebida_selecionada = opcao;
+    elemento.classList.add("selected-drink-option");
+    const icone = document.querySelector(".icon-drink"+opcao);
+    icone.style.color = "#32B72F";
+    drink_selecionada = opcao;
     liberaPedido();
 }
 
 function selecionaSobremesa(opcao) {
-    if (sobremesa_selecionada != 0) resetaOpcaoSobremesa(opcao);
+    if (dessert_selecionada != 0) resetaOpcaoSobremesa(opcao);
 
-    let nome = ".sobremesa" + opcao;
+    let nome = ".dessert" + opcao;
     const elemento = document.querySelector(nome);
-    elemento.classList.add("opcao-selecionada-sobremesa");
-    const icone = document.querySelectorAll(".sobremesa");
-    icone[opcao-1].style.color = "#32B72F";
-    sobremesa_selecionada = opcao;
+    elemento.classList.add("selected-dessert-option");
+    const icone = document.querySelector(".icon-dessert"+opcao);
+    icone.style.color = "#32B72F";
+    dessert_selecionada = opcao;
     liberaPedido();
 }
 
-
 function resetaOpcaoComida(opcao){
-    const anterior = document.querySelector(".opcao-selecionada-comida");
-    const anterior_checado = document.querySelectorAll("ion-icon");
-    anterior.classList.remove("opcao-selecionada-comida");
-    anterior_checado[comida_selecionada-1].style.color = "white";
+    const anterior = document.querySelector(".selected-food-option");
+    anterior.classList.remove("selected-food-option");
+    document.querySelector(".icon-food"+food_selecionada).style.color = "#ffffff";
 }
 
 function resetaOpcaoBebida(opcao){
-    const anterior = document.querySelector(".opcao-selecionada-bebida");
-    const anterior_checado = document.querySelectorAll(".bebida");
-    anterior.classList.remove("opcao-selecionada-bebida");
-    anterior_checado[bebida_selecionada-1].style.color = "white";
+    const anterior = document.querySelector(".selected-drink-option");
+    anterior.classList.remove("selected-drink-option");
+    document.querySelector(".icon-drink"+drink_selecionada).style.color = "#ffffff";
 }
 
 function resetaOpcaoSobremesa(opcao){
-    const anterior = document.querySelector(".opcao-selecionada-sobremesa");
-    const anterior_checado = document.querySelectorAll(".sobremesa");
-    anterior.classList.remove("opcao-selecionada-sobremesa");
-    anterior_checado[sobremesa_selecionada-1].style.color = "white";
+    const anterior = document.querySelector(".selected-dessert-option");
+    anterior.classList.remove("selected-dessert-option");
+    document.querySelector(".icon-dessert"+dessert_selecionada).style.color = "#ffffff";
 }
 
 function trataValorPedido(valor){
@@ -76,52 +107,52 @@ function trataValorPedido(valor){
     return Number(valor);
 }
 
-function fecharPedido() {
+function closeOrder() {
     let nome_cliente = prompt("Informe o seu nome:");
     let endereco_cliente = prompt("Informe seu endereço:");
 
-    const element_comida = document.querySelector(".nome-comida" + comida_selecionada);
-    const element_bebida = document.querySelector(".nome-bebida" + bebida_selecionada);
-    const element_sobremesa = document.querySelector(".nome-sobremesa" + sobremesa_selecionada);
+    const element_food = document.querySelector(".name-food" + food_selecionada);
+    const element_drink = document.querySelector(".name-drink" + drink_selecionada);
+    const element_dessert = document.querySelector(".name-dessert" + dessert_selecionada);
 
-    const element_preco_comida = document.querySelector(".preco-comida" + comida_selecionada);
-    const element_preco_bebida = document.querySelector(".preco-bebida" + bebida_selecionada);
-    const element_preco_sobremesa = document.querySelector(".preco-sobremesa" + sobremesa_selecionada);
+    const element_price_food = document.querySelector(".price-food" + food_selecionada);
+    const element_price_drink = document.querySelector(".price-drink" + drink_selecionada);
+    const element_price_dessert = document.querySelector(".price-dessert" + dessert_selecionada);
    
-    let nome_comida = element_comida.innerHTML
-    let nome_bebida = element_bebida.innerHTML
-    let nome_sobremesa = element_sobremesa.innerHTML
+    let nome_food = element_food.innerHTML
+    let nome_drink = element_drink.innerHTML
+    let nome_dessert = element_dessert.innerHTML
 
-    let valor_comida = element_preco_comida.innerHTML;
-    let valor_bebida = element_preco_bebida.innerHTML;
-    let valor_sobremesa = element_preco_sobremesa.innerHTML;
+    let valor_food = element_price_food.innerHTML;
+    let valor_drink = element_price_drink.innerHTML;
+    let valor_dessert = element_price_dessert.innerHTML;
 
-    let valor_total = trataValorPedido(valor_comida) + trataValorPedido(valor_bebida) + trataValorPedido(valor_sobremesa);
+    let valor_total = trataValorPedido(valor_food) + trataValorPedido(valor_drink) + trataValorPedido(valor_dessert);
     valor_total = valor_total.toFixed(2);
 
-    pedido = `Olá, gostaria de fazer o pedido:\n` + `- Prato: ${nome_comida}\n` + 
-             `- Bebida: ${nome_bebida}\n` + `- Sobremesa: ${nome_sobremesa}\n` +
+    pedido = `Olá, gostaria de fazer o pedido:\n` + `- Prato: ${nome_food}\n` + 
+             `- Bebida: ${nome_drink}\n` + `- Sobremesa: ${nome_dessert}\n` +
              `Total: R$ ${valor_total}\n\n`+ `Nome: ${nome_cliente}\n`+`Endereço: ${endereco_cliente}\n`;
 
-    const elem_revisa_pedido = document.querySelector(".revisa-pedido");
+    const elem_revisa_pedido = document.querySelector(".order-review");
     elem_revisa_pedido.classList.toggle("esconder");
 
-    document.querySelector(".nome-comida").innerHTML = nome_comida;
-    document.querySelector(".nome-bebida").innerHTML = nome_bebida;
-    document.querySelector(".nome-sobremesa").innerHTML = nome_sobremesa;
+    document.querySelector(".name-food").innerHTML = nome_food;
+    document.querySelector(".name-drink").innerHTML = nome_drink;
+    document.querySelector(".name-dessert").innerHTML = nome_dessert;
 
-    document.querySelector(".preco-comida").innerHTML = valor_comida;
-    document.querySelector(".preco-bebida").innerHTML = valor_bebida;
-    document.querySelector(".preco-sobremesa").innerHTML = valor_sobremesa;
-    document.querySelector(".preco-total").innerHTML = "<strong>R$ " + String(valor_total).replace('.',',')+"</strong>";
+    document.querySelector(".price-food").innerHTML = valor_food;
+    document.querySelector(".price-drink").innerHTML = valor_drink;
+    document.querySelector(".price-dessert").innerHTML = valor_dessert;
+    document.querySelector(".price-total").innerHTML = "<strong>R$ " + String(valor_total).replace('.',',')+"</strong>";
 }
 
-function enviarPedido(){
+function sendOrder(){
     const url = "https://wa.me/5592994939981?text=" + encodeURIComponent(pedido);
     window.open(url);
 }
 
-function cancelarPedido(){
-    const elem_revisa_pedido = document.querySelector(".revisa-pedido");
+function cancelOrder(){
+    const elem_revisa_pedido = document.querySelector(".order-review");
     elem_revisa_pedido.classList.toggle("esconder");
 }

@@ -5,7 +5,7 @@ body{
     background-color: #E5E5E5;
 }
 /**Topo**/
-.cabecalho {
+.top {
     width: 100%;
     height: 92px;
     position: fixed;
@@ -16,7 +16,7 @@ body{
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.logo-titulo {
+.logo-title {
     font-family: Righteous;
     color: #ffffff;
     font-size: 44px;
@@ -26,7 +26,7 @@ body{
     text-align: left;
 }
 
-.logo-subtitulo {
+.logo-subtitle {
     font-family: Roboto;
     color: #ffffff;
     font-size: 18px;
@@ -39,7 +39,6 @@ body{
     margin-left: 21px;
 }
 
-
 /**Container**/
 .container {
     margin-top: 120px;
@@ -48,7 +47,7 @@ body{
     height: auto;
 }
 
-.titulos-gerais {
+.general-titles {
     font-family: Righteous;
     font-size: 26px;
     font-weight: 400;
@@ -59,60 +58,14 @@ body{
     margin-bottom: 10px;
 }
 
-.nome-comida1,
-.nome-comida2,
-.nome-comida3,
-.nome-bebida1,
-.nome-bebida2,
-.nome-bebida3,
-.nome-sobremesa1,
-.nome-sobremesa2,
-.nome-sobremesa3 {
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 19px;
-    text-align: left;
-    margin-top: 5px;
-    color: #333333;    
-}
-
-.descricao-produto {
+.product-description {
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
     line-height: 18px;
-    text-align: left;
     margin-top: 8px;
     margin-bottom: 8px;
     color: #A6A6A6;
-}
-
-.preco {
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19px;
-    text-align: left;
-    color: black;    
-}
-
-
-.preco-comida1,
-.preco-comida2,
-.preco-comida3,
-.preco-bebida1,
-.preco-bebida2,
-.preco-bebida3,
-.preco-sobremesa1,
-.preco-sobremesa2,
-.preco-sobremesa3 {
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19px;
-    text-align: left;
-    color: black;  
 }
 
 ul {
@@ -131,14 +84,26 @@ ion-icon {
     margin-left: 67.1px;
 }
 
-.opcao{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.opcao-bebida div, .opcao-sobremesa div{
+.option div{
     display: flex;
     justify-content: space-between;
+}
+
+.option:nth-child(1){
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    margin-top: 10px;
+    color: #333333;  
+}
+
+.option div p{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #000000;
 }
 
 .item{
@@ -156,9 +121,10 @@ ion-icon {
     box-sizing: border-box;
 }
 
-.imagem-produto {
+.product-image {
     width: 144px;
     height: 87px;
+    margin-bottom: 7px;
 }
 
 
@@ -167,7 +133,7 @@ ion-icon {
     margin-bottom: 25px;
 }
 
-.botao-pedido {
+.button-order {
     width: 88%;
     height: 67%;
     background-color: #CBCBCB;
@@ -182,19 +148,19 @@ ion-icon {
     color: #ffffff;
 }
 
-.botao-pedido-confirmacao {
+.button-order-confirm {
     background-color: #32B72F;
     font-weight: 700;
 }
 
-.opcao-selecionada-comida,
-.opcao-selecionada-bebida,
-.opcao-selecionada-sobremesa {
+.selected-food-option,
+.selected-drink-option,
+.selected-dessert-option {
     border: 5px solid #32B72F;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 /**Barra inferior**/
-.barra-inferior {
+.bottom-bar {
     position: fixed;
     width: 100%;
     height: 92px;
@@ -203,7 +169,7 @@ ion-icon {
     background-color: #ffffff;
 }
   
-.realizar-pedido {
+.place-order {
     display: flex;
     height: 100%;
     align-items: center;
@@ -214,7 +180,7 @@ ion-icon {
     display: none;
 }
 
-.confirmar-pedido {
+.confirm-order {
     display: flex;
     width: 100%;
     height: 100%;
@@ -236,6 +202,7 @@ ion-icon {
     border-radius: 5px;
     box-shadow: 0px 0px 10px 1px #00000040;
 }
+
 .box div{
     display: flex;
     justify-content: space-between;
@@ -248,7 +215,7 @@ ion-icon {
     color: white;
 }
 
-.texto {
+.custom-titles {
     text-align: center;
     font-family: Roboto;
     font-size: 22px;
@@ -257,20 +224,14 @@ ion-icon {
     color: #FFFFFF;
 }
 
-
-.total {
-    font-family: Roboto;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 26px;
-    color: #FFFFFF;
-    letter-spacing: 0.018em;
+.confirm{
+    display: flex;
+    flex-direction: column;
 }
 
-.botao-confirmar{
+.button-confirm, .button-cancel{
     width: 100%;
     height: 52px;
-    background-color: #FFFFFF;
     border-radius: 50px;
     border: none;
     font-family: Roboto;
@@ -279,24 +240,14 @@ ion-icon {
     line-height: 23px;
     letter-spacing: 0.018em;
     text-align: center;
+}
+
+.button-confirm{
+    background-color: #FFFFFF;
     color: #50D074;
-}
+} 
 
-.botao-cancelar {
-    width: 100%;
-    height: 52px;
+.button-cancel{
     background-color: #50D074;
-    border: none;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 23px;
-    letter-spacing: 0.018em;
-    text-align: center;
     color: #FFFFFF;
-}
-
-.confirmar{
-    display: flex;
-    flex-direction: column;
 }
