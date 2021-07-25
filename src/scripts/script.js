@@ -29,7 +29,6 @@ function releaseProduct(product, option){
 }
 
 function selectProduct(product, option){
-    
     let previous_option = releaseProduct(product, option);
     if (previous_option != 0) resetOption(product, previous_option);
 
@@ -80,7 +79,7 @@ function closeOrder() {
     amount = amount.toFixed(2);
 
     const review_request = document.querySelector(".order-review");
-    review_request.classList.toggle("esconder");
+    review_request.classList.toggle("hide");
 
     document.querySelector(".food-name").innerHTML = food_name;
     document.querySelector(".drink-name").innerHTML = drink_name;
@@ -103,5 +102,5 @@ function sendOrder(){
 
 function cancelOrder(){
     const review_request = document.querySelector(".order-review");
-    review_request.classList.toggle("esconder");
+    review_request.classList.toggle("hide");
 }
