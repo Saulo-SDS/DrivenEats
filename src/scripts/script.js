@@ -50,7 +50,6 @@ function resetOption(product, option){
 }
 
 function convertValue(price){
-    price = price.replace('R$ ','');
     price = price.replace(',','.');
     return Number(price);
 }
@@ -62,7 +61,6 @@ function closeOrder() {
     const element_food = document.querySelector(".name-food" + food_selecionada);
     const element_drink = document.querySelector(".name-drink" + drink_selecionada);
     const element_dessert = document.querySelector(".name-dessert" + dessert_selecionada);
-
     const element_price_food = document.querySelector(".price-food" + food_selecionada);
     const element_price_drink = document.querySelector(".price-drink" + drink_selecionada);
     const element_price_dessert = document.querySelector(".price-dessert" + dessert_selecionada);
@@ -70,7 +68,6 @@ function closeOrder() {
     let food_name = element_food.innerHTML
     let drink_name = element_drink.innerHTML
     let dessert_name = element_dessert.innerHTML
-
     let food_price = element_price_food.innerHTML;
     let drink_price = element_price_drink.innerHTML;
     let dessert_price = element_price_dessert.innerHTML;
@@ -84,7 +81,6 @@ function closeOrder() {
     document.querySelector(".food-name").innerHTML = food_name;
     document.querySelector(".drink-name").innerHTML = drink_name;
     document.querySelector(".dessert-name").innerHTML = dessert_name;
-
     document.querySelector(".food-price").innerHTML = food_price;
     document.querySelector(".drink-price").innerHTML = drink_price;
     document.querySelector(".dessert-price").innerHTML = dessert_price;
